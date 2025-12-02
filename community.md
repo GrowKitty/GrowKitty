@@ -27,19 +27,10 @@ Found a bug or want to propose an improvement?
 
 ---
 
-## 📧 Mailing Lists (Optional)
-You can subscribe to updates and release notes via our mailing list.
-
-📮 **growkitty-announcement@example.com**  
-(Real email optional — 과제용으로 설명만 있어도 충분함)
-
----
-
 ## 💬 Real-Time Chat (Optional)
 Join our community chat server (e.g., Discord).
 
-👉 https://discord.gg/example  
-(원하면 실제 서버 만들 때 링크 바꿔 넣자!)
+👉 https://discord.com/channels/1445346844375908375/1445346845558571081
 
 ---
 
