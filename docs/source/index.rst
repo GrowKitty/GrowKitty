@@ -20,7 +20,6 @@ documentation for details.
    how_to_use
    configuration
    contributing
-   usage
    release-notes
    technical-overview
    troubleshooting
