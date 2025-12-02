@@ -14,8 +14,7 @@ Feel free to reach out through any of the following methods.
 ---
 
 ## 📧 Email
-📮 **growkitty-team@example.com**  
-(실제 이메일 없어도 과제용으로 충분함)
+📮 **kej679502@naver.com**  
 
 ---
 
@@ -29,7 +28,7 @@ Report bugs or request features:
 ## 💬 Community Chat (Optional)
 Join our community chat for real-time communication.
 
-👉 https://discord.gg/example
+👉 https://discord.com/channels/1445346844375908375/1445346845558571081
 
 ---
 
