@@ -49,3 +49,11 @@ Grow Kitty focuses on sustaining user participation by incorporating reward-base
 | 유병희 | Developer | Implementation of frontend functions and reward logic |
 | 김도훈 | Designer | UI/UX design, character illustration, and visual consistency |
 | 김수민 | QA / Communication | Testing, meeting documentation, and task coordination |
+
+
+
+## Documentation  
+https://growkitty.readthedocs.io/en/latest/
+
+## Website  
+(프론트가 만들면 링크 연결)
