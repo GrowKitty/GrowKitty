@@ -18,4 +18,11 @@ documentation for details.
    about
    getting_started
    how_to_use
-
+   api-reference
+   configuration
+   contributing
+   usage
+   release-notes
+   technical-overview
+   troubleshooting
+   faq

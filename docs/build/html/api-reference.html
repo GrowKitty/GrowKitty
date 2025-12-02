@@ -1,0 +1,805 @@
+<!DOCTYPE html>
+
+<html lang="en" data-content_root="./">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>API Reference &#8212; GrowKitty 0.1.0 documentation</title>
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=d1102ebc" />
+    <link rel="stylesheet" type="text/css" href="_static/basic.css?v=b08954a9" />
+    <link rel="stylesheet" type="text/css" href="_static/alabaster.css?v=27fed22d" />
+    <script src="_static/documentation_options.js?v=01f34227"></script>
+    <script src="_static/doctools.js?v=9bcbadda"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Configuration Guide" href="configuration.html" />
+    <link rel="prev" title="How to Use" href="how_to_use.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+
+  
+  
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <section id="api-reference">
+<h1>API Reference<a class="headerlink" href="#api-reference" title="Link to this heading">¶</a></h1>
+<p>This document provides detailed reference for GrowKitty’s JavaScript API, useful for developers who want to extend or integrate with the application.</p>
+<section id="core-api">
+<h2>Core API<a class="headerlink" href="#core-api" title="Link to this heading">¶</a></h2>
+<section id="habitmanager">
+<h3>HabitManager<a class="headerlink" href="#habitmanager" title="Link to this heading">¶</a></h3>
+<p>Manages all habit-related operations.</p>
+<p><strong>Methods</strong></p>
+<section id="addhabit-config">
+<h4><code class="docutils literal notranslate"><span class="pre">addHabit(config)</span></code><a class="headerlink" href="#addhabit-config" title="Link to this heading">¶</a></h4>
+<p>Creates a new habit.</p>
+<p><strong>Parameters:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">           </span><span class="c1">// Required: Habit name</span>
+<span class="w">  </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">       </span><span class="c1">// Required: Category identifier</span>
+<span class="w">  </span><span class="nx">frequency</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">      </span><span class="c1">// &#39;daily&#39;, &#39;weekly&#39;, or &#39;custom&#39;</span>
+<span class="w">  </span><span class="nx">reminderTime</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">   </span><span class="c1">// Optional: &#39;HH:MM&#39; format</span>
+<span class="w">  </span><span class="nx">notes</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="w">          </span><span class="c1">// Optional: Additional notes</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Habit</span></code> object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">habit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">addHabit</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Morning Exercise&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;health&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">frequency</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;daily&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">reminderTime</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;07:00&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="gethabit-id">
+<h4><code class="docutils literal notranslate"><span class="pre">getHabit(id)</span></code><a class="headerlink" href="#gethabit-id" title="Link to this heading">¶</a></h4>
+<p>Retrieves a habit by ID.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (string): Habit identifier</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Habit</span></code> object or <code class="docutils literal notranslate"><span class="pre">null</span></code></p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">habit</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">getHabit</span><span class="p">(</span><span class="s1">&#39;habit_12345&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="updatehabit-id-updates">
+<h4><code class="docutils literal notranslate"><span class="pre">updateHabit(id,</span> <span class="pre">updates)</span></code><a class="headerlink" href="#updatehabit-id-updates" title="Link to this heading">¶</a></h4>
+<p>Updates an existing habit.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (string): Habit identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">updates</span></code> (object): Fields to update</p></li>
+</ul>
+<p><strong>Returns:</strong> Updated <code class="docutils literal notranslate"><span class="pre">Habit</span></code> object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">updateHabit</span><span class="p">(</span><span class="s1">&#39;habit_12345&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Evening Exercise&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">reminderTime</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;18:00&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="deletehabit-id">
+<h4><code class="docutils literal notranslate"><span class="pre">deleteHabit(id)</span></code><a class="headerlink" href="#deletehabit-id" title="Link to this heading">¶</a></h4>
+<p>Deletes a habit permanently.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (string): Habit identifier</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code> (success status)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">deleteHabit</span><span class="p">(</span><span class="s1">&#39;habit_12345&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="completehabit-id-date">
+<h4><code class="docutils literal notranslate"><span class="pre">completeHabit(id,</span> <span class="pre">date)</span></code><a class="headerlink" href="#completehabit-id-date" title="Link to this heading">¶</a></h4>
+<p>Marks a habit as completed.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (string): Habit identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code> (Date, optional): Completion date (defaults to today)</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Completion</span></code> object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">completion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">completeHabit</span><span class="p">(</span><span class="s1">&#39;habit_12345&#39;</span><span class="p">);</span>
+
+<span class="c1">// Or for a specific date</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">pastCompletion</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">completeHabit</span><span class="p">(</span>
+<span class="w">  </span><span class="s1">&#39;habit_12345&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="ow">new</span><span class="w"> </span><span class="nb">Date</span><span class="p">(</span><span class="s1">&#39;2025-01-15&#39;</span><span class="p">)</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="skiphabit-id-reason">
+<h4><code class="docutils literal notranslate"><span class="pre">skipHabit(id,</span> <span class="pre">reason)</span></code><a class="headerlink" href="#skiphabit-id-reason" title="Link to this heading">¶</a></h4>
+<p>Skips a habit with an optional reason.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (string): Habit identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">reason</span></code> (string, optional): Skip reason</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Skip</span></code> object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">skipHabit</span><span class="p">(</span><span class="s1">&#39;habit_12345&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Feeling unwell&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="gethabits-filter">
+<h4><code class="docutils literal notranslate"><span class="pre">getHabits(filter)</span></code><a class="headerlink" href="#gethabits-filter" title="Link to this heading">¶</a></h4>
+<p>Retrieves habits with optional filtering.</p>
+<p><strong>Parameters:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">      </span><span class="c1">// Optional: Filter by category</span>
+<span class="w">  </span><span class="nx">frequency</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">     </span><span class="c1">// Optional: Filter by frequency</span>
+<span class="w">  </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kr">boolean</span><span class="w">       </span><span class="c1">// Optional: Only active habits</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Returns:</strong> Array of <code class="docutils literal notranslate"><span class="pre">Habit</span></code> objects</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Get all daily health habits</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">habits</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">getHabits</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">category</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;health&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">frequency</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;daily&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">active</span><span class="o">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="gethabitstats-id-days">
+<h4><code class="docutils literal notranslate"><span class="pre">getHabitStats(id,</span> <span class="pre">days)</span></code><a class="headerlink" href="#gethabitstats-id-days" title="Link to this heading">¶</a></h4>
+<p>Calculates statistics for a habit.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code> (string): Habit identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">days</span></code> (number, optional): Number of days to analyze (default: 30)</p></li>
+</ul>
+<p><strong>Returns:</strong> Statistics object</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nx">successRate</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">     </span><span class="c1">// 0-100 percentage</span>
+<span class="w">  </span><span class="nx">currentStreak</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">   </span><span class="c1">// Days in a row</span>
+<span class="w">  </span><span class="nx">longestStreak</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">   </span><span class="c1">// Best streak ever</span>
+<span class="w">  </span><span class="nx">totalCompletions</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">averagePerWeek</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">lastCompleted</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">stats</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">getHabitStats</span><span class="p">(</span><span class="s1">&#39;habit_12345&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">90</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Success rate: </span><span class="si">${</span><span class="nx">stats</span><span class="p">.</span><span class="nx">successRate</span><span class="si">}</span><span class="sb">%`</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="missionsystem">
+<h3>MissionSystem<a class="headerlink" href="#missionsystem" title="Link to this heading">¶</a></h3>
+<p>Manages missions and challenges.</p>
+<p><strong>Methods</strong></p>
+<section id="getdailymissions">
+<h4><code class="docutils literal notranslate"><span class="pre">getDailyMissions()</span></code><a class="headerlink" href="#getdailymissions" title="Link to this heading">¶</a></h4>
+<p>Retrieves today’s missions.</p>
+<p><strong>Returns:</strong> Array of <code class="docutils literal notranslate"><span class="pre">Mission</span></code> objects</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">missions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MissionSystem</span><span class="p">.</span><span class="nx">getDailyMissions</span><span class="p">();</span>
+<span class="nx">missions</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">mission</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">mission</span><span class="p">.</span><span class="nx">title</span><span class="p">,</span><span class="w"> </span><span class="nx">mission</span><span class="p">.</span><span class="nx">progress</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="checkmissionprogress-missionid">
+<h4><code class="docutils literal notranslate"><span class="pre">checkMissionProgress(missionId)</span></code><a class="headerlink" href="#checkmissionprogress-missionid" title="Link to this heading">¶</a></h4>
+<p>Updates and returns mission progress.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">missionId</span></code> (string): Mission identifier</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Mission</span></code> object with updated progress</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">mission</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MissionSystem</span><span class="p">.</span><span class="nx">checkMissionProgress</span><span class="p">(</span><span class="s1">&#39;mission_123&#39;</span><span class="p">);</span>
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">mission</span><span class="p">.</span><span class="nx">progress</span><span class="w"> </span><span class="o">&gt;=</span><span class="w"> </span><span class="mf">1.0</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Mission completed!&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="completemission-missionid">
+<h4><code class="docutils literal notranslate"><span class="pre">completeMission(missionId)</span></code><a class="headerlink" href="#completemission-missionid" title="Link to this heading">¶</a></h4>
+<p>Manually completes a mission and grants rewards.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">missionId</span></code> (string): Mission identifier</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Reward</span></code> object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MissionSystem</span><span class="p">.</span><span class="nx">completeMission</span><span class="p">(</span><span class="s1">&#39;mission_123&#39;</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Earned </span><span class="si">${</span><span class="nx">reward</span><span class="p">.</span><span class="nx">xp</span><span class="si">}</span><span class="sb"> XP and </span><span class="si">${</span><span class="nx">reward</span><span class="p">.</span><span class="nx">coins</span><span class="si">}</span><span class="sb"> coins`</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="refreshmissions">
+<h4><code class="docutils literal notranslate"><span class="pre">refreshMissions()</span></code><a class="headerlink" href="#refreshmissions" title="Link to this heading">¶</a></h4>
+<p>Generates new random missions.</p>
+<p><strong>Returns:</strong> Array of new <code class="docutils literal notranslate"><span class="pre">Mission</span></code> objects</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Costs 75 coins</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">newMissions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MissionSystem</span><span class="p">.</span><span class="nx">refreshMissions</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="catcontroller">
+<h3>CatController<a class="headerlink" href="#catcontroller" title="Link to this heading">¶</a></h3>
+<p>Controls the virtual cat’s behavior and appearance.</p>
+<p><strong>Methods</strong></p>
+<section id="getcat">
+<h4><code class="docutils literal notranslate"><span class="pre">getCat()</span></code><a class="headerlink" href="#getcat" title="Link to this heading">¶</a></h4>
+<p>Retrieves current cat state.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Cat</span></code> object</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">stage</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">         </span><span class="c1">// &#39;kitten&#39;, &#39;young&#39;, &#39;adult&#39;, &#39;master&#39;, &#39;legendary&#39;</span>
+<span class="w">  </span><span class="nx">level</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">mood</span><span class="o">:</span><span class="w"> </span><span class="nx">string</span><span class="p">,</span><span class="w">          </span><span class="c1">// &#39;happy&#39;, &#39;content&#39;, &#39;neutral&#39;, &#39;sad&#39;, &#39;sick&#39;</span>
+<span class="w">  </span><span class="nx">happiness</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span><span class="w">     </span><span class="c1">// 0-100</span>
+<span class="w">  </span><span class="nx">accessories</span><span class="o">:</span><span class="w"> </span><span class="nb">Array</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">cat</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CatController</span><span class="p">.</span><span class="nx">getCat</span><span class="p">();</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`</span><span class="si">${</span><span class="nx">cat</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb"> is </span><span class="si">${</span><span class="nx">cat</span><span class="p">.</span><span class="nx">mood</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="updatecatname-name">
+<h4><code class="docutils literal notranslate"><span class="pre">updateCatName(name)</span></code><a class="headerlink" href="#updatecatname-name" title="Link to this heading">¶</a></h4>
+<p>Changes the cat’s name.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">name</span></code> (string): New name (max 20 characters)</p></li>
+</ul>
+<p><strong>Returns:</strong> Updated <code class="docutils literal notranslate"><span class="pre">Cat</span></code> object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">CatController</span><span class="p">.</span><span class="nx">updateCatName</span><span class="p">(</span><span class="s1">&#39;Whiskers&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="feedcat-item">
+<h4><code class="docutils literal notranslate"><span class="pre">feedCat(item)</span></code><a class="headerlink" href="#feedcat-item" title="Link to this heading">¶</a></h4>
+<p>Gives food to the cat.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">item</span></code> (object): Food item</p></li>
+</ul>
+<p><strong>Returns:</strong> Reaction object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">reaction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CatController</span><span class="p">.</span><span class="nx">feedCat</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">type</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;treat&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">effect</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;happiness_boost&#39;</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="petcat">
+<h4><code class="docutils literal notranslate"><span class="pre">petCat()</span></code><a class="headerlink" href="#petcat" title="Link to this heading">¶</a></h4>
+<p>Interacts with the cat through petting.</p>
+<p><strong>Returns:</strong> Reaction object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">reaction</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CatController</span><span class="p">.</span><span class="nx">petCat</span><span class="p">();</span>
+<span class="c1">// Cat shows happiness animation</span>
+</pre></div>
+</div>
+</section>
+<section id="equipaccessory-itemid-slot">
+<h4><code class="docutils literal notranslate"><span class="pre">equipAccessory(itemId,</span> <span class="pre">slot)</span></code><a class="headerlink" href="#equipaccessory-itemid-slot" title="Link to this heading">¶</a></h4>
+<p>Equips an accessory on the cat.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">itemId</span></code> (string): Item identifier</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">slot</span></code> (string): ‘hat’, ‘clothes’, or ‘accessory’</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code> (success status)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">CatController</span><span class="p">.</span><span class="nx">equipAccessory</span><span class="p">(</span><span class="s1">&#39;item_hat_01&#39;</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;hat&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="unequipaccessory-slot">
+<h4><code class="docutils literal notranslate"><span class="pre">unequipAccessory(slot)</span></code><a class="headerlink" href="#unequipaccessory-slot" title="Link to this heading">¶</a></h4>
+<p>Removes an equipped accessory.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">slot</span></code> (string): Slot to clear</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code> (success status)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">CatController</span><span class="p">.</span><span class="nx">unequipAccessory</span><span class="p">(</span><span class="s1">&#39;hat&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="rewardsystem">
+<h3>RewardSystem<a class="headerlink" href="#rewardsystem" title="Link to this heading">¶</a></h3>
+<p>Handles all reward calculations and distributions.</p>
+<p><strong>Methods</strong></p>
+<section id="calculatereward-action-multiplier">
+<h4><code class="docutils literal notranslate"><span class="pre">calculateReward(action,</span> <span class="pre">multiplier)</span></code><a class="headerlink" href="#calculatereward-action-multiplier" title="Link to this heading">¶</a></h4>
+<p>Calculates reward amount for an action.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">action</span></code> (string): Action type (‘habitComplete’, ‘missionComplete’, etc.)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">multiplier</span></code> (number, optional): Reward multiplier (default: 1.0)</p></li>
+</ul>
+<p><strong>Returns:</strong> Reward object</p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+<span class="w">  </span><span class="nx">xp</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">coins</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">gems</span><span class="o">:</span><span class="w"> </span><span class="nx">number</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">RewardSystem</span><span class="p">.</span><span class="nx">calculateReward</span><span class="p">(</span><span class="s1">&#39;habitComplete&#39;</span><span class="p">,</span><span class="w"> </span><span class="mf">1.5</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="grantreward-reward-source">
+<h4><code class="docutils literal notranslate"><span class="pre">grantReward(reward,</span> <span class="pre">source)</span></code><a class="headerlink" href="#grantreward-reward-source" title="Link to this heading">¶</a></h4>
+<p>Grants rewards to the user.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">reward</span></code> (object): Reward amounts</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">source</span></code> (string): Source description</p></li>
+</ul>
+<p><strong>Returns:</strong> Updated user object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">RewardSystem</span><span class="p">.</span><span class="nx">grantReward</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">xp</span><span class="o">:</span><span class="w"> </span><span class="mf">100</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">coins</span><span class="o">:</span><span class="w"> </span><span class="mf">20</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">gems</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="p">},</span><span class="w"> </span><span class="s1">&#39;Daily mission completion&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="purchase-itemid-cost">
+<h4><code class="docutils literal notranslate"><span class="pre">purchase(itemId,</span> <span class="pre">cost)</span></code><a class="headerlink" href="#purchase-itemid-cost" title="Link to this heading">¶</a></h4>
+<p>Processes a shop purchase.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">itemId</span></code> (string): Item to purchase</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cost</span></code> (object): Cost in currencies</p></li>
+</ul>
+<p><strong>Returns:</strong> Purchase result object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">result</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">RewardSystem</span><span class="p">.</span><span class="nx">purchase</span><span class="p">(</span><span class="s1">&#39;hat_01&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">coins</span><span class="o">:</span><span class="w"> </span><span class="mf">50</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">gems</span><span class="o">:</span><span class="w"> </span><span class="mf">0</span>
+<span class="p">});</span>
+
+<span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">result</span><span class="p">.</span><span class="nx">success</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="s1">&#39;Purchase successful!&#39;</span><span class="p">);</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="storage-api">
+<h2>Storage API<a class="headerlink" href="#storage-api" title="Link to this heading">¶</a></h2>
+<section id="storagemanager">
+<h3>StorageManager<a class="headerlink" href="#storagemanager" title="Link to this heading">¶</a></h3>
+<p>Handles data persistence.</p>
+<p><strong>Methods</strong></p>
+<section id="save-data">
+<h4><code class="docutils literal notranslate"><span class="pre">save(data)</span></code><a class="headerlink" href="#save-data" title="Link to this heading">¶</a></h4>
+<p>Saves application state to LocalStorage.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (object): Application state</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code> (success status)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StorageManager</span><span class="p">.</span><span class="nx">save</span><span class="p">({</span>
+<span class="w">  </span><span class="nx">user</span><span class="o">:</span><span class="w"> </span><span class="nx">userData</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">habits</span><span class="o">:</span><span class="w"> </span><span class="nx">habitsData</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">cat</span><span class="o">:</span><span class="w"> </span><span class="nx">catData</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="load">
+<h4><code class="docutils literal notranslate"><span class="pre">load()</span></code><a class="headerlink" href="#load" title="Link to this heading">¶</a></h4>
+<p>Loads application state from LocalStorage.</p>
+<p><strong>Returns:</strong> Application state object</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StorageManager</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+</pre></div>
+</div>
+</section>
+<section id="export-format">
+<h4><code class="docutils literal notranslate"><span class="pre">export(format)</span></code><a class="headerlink" href="#export-format" title="Link to this heading">¶</a></h4>
+<p>Exports data in specified format.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> (string): ‘json’ or ‘csv’</p></li>
+</ul>
+<p><strong>Returns:</strong> Serialized data string</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">json</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StorageManager</span><span class="p">.</span><span class="k">export</span><span class="p">(</span><span class="s1">&#39;json&#39;</span><span class="p">);</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">csv</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StorageManager</span><span class="p">.</span><span class="k">export</span><span class="p">(</span><span class="s1">&#39;csv&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="import-data-format">
+<h4><code class="docutils literal notranslate"><span class="pre">import(data,</span> <span class="pre">format)</span></code><a class="headerlink" href="#import-data-format" title="Link to this heading">¶</a></h4>
+<p>Imports data from serialized format.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (string): Serialized data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format</span></code> (string): ‘json’ or ‘csv’</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code> (success status)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">jsonData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s1">&#39;{&quot;user&quot;: {...}, &quot;habits&quot;: [...]}&#39;</span><span class="p">;</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">success</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StorageManager</span><span class="p">.</span><span class="k">import</span><span class="p">(</span><span class="nx">jsonData</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;json&#39;</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="clear">
+<h4><code class="docutils literal notranslate"><span class="pre">clear()</span></code><a class="headerlink" href="#clear" title="Link to this heading">¶</a></h4>
+<p>Clears all stored data.</p>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code> (success status)</p>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">confirm</span><span class="p">(</span><span class="s1">&#39;Delete all data?&#39;</span><span class="p">))</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">StorageManager</span><span class="p">.</span><span class="nx">clear</span><span class="p">();</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="event-system">
+<h2>Event System<a class="headerlink" href="#event-system" title="Link to this heading">¶</a></h2>
+<section id="eventbus">
+<h3>EventBus<a class="headerlink" href="#eventbus" title="Link to this heading">¶</a></h3>
+<p>Central event management.</p>
+<p><strong>Methods</strong></p>
+<section id="on-event-callback">
+<h4><code class="docutils literal notranslate"><span class="pre">on(event,</span> <span class="pre">callback)</span></code><a class="headerlink" href="#on-event-callback" title="Link to this heading">¶</a></h4>
+<p>Registers an event listener.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">event</span></code> (string): Event name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code> (function): Handler function</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;habit:completed&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">habit</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Completed: </span><span class="si">${</span><span class="nx">habit</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">showNotification</span><span class="p">(</span><span class="s1">&#39;Great job!&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+<section id="off-event-callback">
+<h4><code class="docutils literal notranslate"><span class="pre">off(event,</span> <span class="pre">callback)</span></code><a class="headerlink" href="#off-event-callback" title="Link to this heading">¶</a></h4>
+<p>Removes an event listener.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">event</span></code> (string): Event name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">callback</span></code> (function): Handler function to remove</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="kd">const</span><span class="w"> </span><span class="nx">handler</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">(</span><span class="nx">habit</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="cm">/* ... */</span><span class="w"> </span><span class="p">};</span>
+<span class="nx">EventBus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;habit:completed&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
+
+<span class="c1">// Later...</span>
+<span class="nx">EventBus</span><span class="p">.</span><span class="nx">off</span><span class="p">(</span><span class="s1">&#39;habit:completed&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">handler</span><span class="p">);</span>
+</pre></div>
+</div>
+</section>
+<section id="emit-event-data">
+<h4><code class="docutils literal notranslate"><span class="pre">emit(event,</span> <span class="pre">data)</span></code><a class="headerlink" href="#emit-event-data" title="Link to this heading">¶</a></h4>
+<p>Triggers an event.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">event</span></code> (string): Event name</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">data</span></code> (any): Event data</p></li>
+</ul>
+<p><strong>Example:</strong></p>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">emit</span><span class="p">(</span><span class="s1">&#39;habit:completed&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">id</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;habit_123&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;Morning Exercise&#39;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="nb">Date</span><span class="p">.</span><span class="nx">now</span><span class="p">()</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="standard-events">
+<h3>Standard Events<a class="headerlink" href="#standard-events" title="Link to this heading">¶</a></h3>
+<p>Application events you can listen to:</p>
+<p><strong>Habit Events</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">habit:added</span></code> - New habit created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">habit:updated</span></code> - Habit modified</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">habit:deleted</span></code> - Habit removed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">habit:completed</span></code> - Habit marked complete</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">habit:skipped</span></code> - Habit skipped</p></li>
+</ul>
+<p><strong>Mission Events</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">mission:generated</span></code> - New missions created</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mission:progress</span></code> - Mission progress updated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">mission:completed</span></code> - Mission finished</p></li>
+</ul>
+<p><strong>Cat Events</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">cat:fed</span></code> - Cat was fed</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat:petted</span></code> - Cat was petted</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat:mood_changed</span></code> - Cat mood updated</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat:leveled_up</span></code> - Cat reached new stage</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cat:accessory_equipped</span></code> - Accessory added</p></li>
+</ul>
+<p><strong>User Events</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">user:leveled_up</span></code> - User gained a level</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user:reward_earned</span></code> - Reward granted</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">user:purchase_made</span></code> - Shop purchase completed</p></li>
+</ul>
+<p><strong>System Events</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">app:loaded</span></code> - Application initialized</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app:saved</span></code> - Data saved to storage</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">app:error</span></code> - Error occurred</p></li>
+</ul>
+<section id="example-usage">
+<h4>Example Usage<a class="headerlink" href="#example-usage" title="Link to this heading">¶</a></h4>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Listen for multiple events</span>
+<span class="nx">EventBus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;habit:completed&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">habit</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">CatController</span><span class="p">.</span><span class="nx">react</span><span class="p">(</span><span class="s1">&#39;celebrate&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">showNotification</span><span class="p">(</span><span class="sb">`Completed: </span><span class="si">${</span><span class="nx">habit</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">EventBus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;user:leveled_up&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">showLevelUpModal</span><span class="p">(</span><span class="nx">data</span><span class="p">.</span><span class="nx">level</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">playSound</span><span class="p">(</span><span class="s1">&#39;levelup&#39;</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="nx">EventBus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;app:error&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="s1">&#39;Application error:&#39;</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">);</span>
+<span class="w">  </span><span class="nx">showErrorNotification</span><span class="p">(</span><span class="nx">error</span><span class="p">.</span><span class="nx">message</span><span class="p">);</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+<section id="utility-functions">
+<h2>Utility Functions<a class="headerlink" href="#utility-functions" title="Link to this heading">¶</a></h2>
+<section id="dateutils">
+<h3>DateUtils<a class="headerlink" href="#dateutils" title="Link to this heading">¶</a></h3>
+<p>Date manipulation utilities.</p>
+<section id="istoday-date">
+<h4><code class="docutils literal notranslate"><span class="pre">isToday(date)</span></code><a class="headerlink" href="#istoday-date" title="Link to this heading">¶</a></h4>
+<p>Checks if date is today.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code> (Date): Date to check</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
+</section>
+<section id="issameday-date1-date2">
+<h4><code class="docutils literal notranslate"><span class="pre">isSameDay(date1,</span> <span class="pre">date2)</span></code><a class="headerlink" href="#issameday-date1-date2" title="Link to this heading">¶</a></h4>
+<p>Checks if two dates are the same day.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date1</span></code> (Date): First date</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date2</span></code> (Date): Second date</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">boolean</span></code></p>
+</section>
+<section id="getstartofday-date">
+<h4><code class="docutils literal notranslate"><span class="pre">getStartOfDay(date)</span></code><a class="headerlink" href="#getstartofday-date" title="Link to this heading">¶</a></h4>
+<p>Gets start of day (00:00:00).</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date</span></code> (Date): Input date</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">Date</span></code></p>
+</section>
+<section id="getdaysdifference-date1-date2">
+<h4><code class="docutils literal notranslate"><span class="pre">getDaysDifference(date1,</span> <span class="pre">date2)</span></code><a class="headerlink" href="#getdaysdifference-date1-date2" title="Link to this heading">¶</a></h4>
+<p>Calculates days between dates.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">date1</span></code> (Date): Start date</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">date2</span></code> (Date): End date</p></li>
+</ul>
+<p><strong>Returns:</strong> <code class="docutils literal notranslate"><span class="pre">number</span></code></p>
+</section>
+</section>
+<section id="stringutils">
+<h3>StringUtils<a class="headerlink" href="#stringutils" title="Link to this heading">¶</a></h3>
+<p>String manipulation utilities.</p>
+<section id="sanitize-str">
+<h4><code class="docutils literal notranslate"><span class="pre">sanitize(str)</span></code><a class="headerlink" href="#sanitize-str" title="Link to this heading">¶</a></h4>
+<p>Sanitizes HTML in strings.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> (string): Input string</p></li>
+</ul>
+<p><strong>Returns:</strong> Sanitized string</p>
+</section>
+<section id="truncate-str-length">
+<h4><code class="docutils literal notranslate"><span class="pre">truncate(str,</span> <span class="pre">length)</span></code><a class="headerlink" href="#truncate-str-length" title="Link to this heading">¶</a></h4>
+<p>Truncates string to length.</p>
+<p><strong>Parameters:</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code> (string): Input string</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">length</span></code> (number): Max length</p></li>
+</ul>
+<p><strong>Returns:</strong> Truncated string</p>
+</section>
+<section id="generateid">
+<h4><code class="docutils literal notranslate"><span class="pre">generateId()</span></code><a class="headerlink" href="#generateid" title="Link to this heading">¶</a></h4>
+<p>Generates unique identifier.</p>
+<p><strong>Returns:</strong> Unique string ID</p>
+</section>
+</section>
+</section>
+<section id="example-integration">
+<h2>Example Integration<a class="headerlink" href="#example-integration" title="Link to this heading">¶</a></h2>
+<section id="complete-example">
+<h3>Complete Example<a class="headerlink" href="#complete-example" title="Link to this heading">¶</a></h3>
+<div class="highlight-javascript notranslate"><div class="highlight"><pre><span></span><span class="c1">// Initialize the application</span>
+<span class="nb">document</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="s1">&#39;DOMContentLoaded&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Load saved data</span>
+<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">StorageManager</span><span class="p">.</span><span class="nx">load</span><span class="p">();</span>
+
+<span class="w">  </span><span class="c1">// Set up event listeners</span>
+<span class="w">  </span><span class="nx">EventBus</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;habit:completed&#39;</span><span class="p">,</span><span class="w"> </span><span class="p">(</span><span class="nx">habit</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="c1">// Update cat mood</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">successRate</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">HabitManager</span><span class="p">.</span><span class="nx">getSuccessRate</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">CatController</span><span class="p">.</span><span class="nx">updateMood</span><span class="p">(</span><span class="nx">successRate</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Grant rewards</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">reward</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">RewardSystem</span><span class="p">.</span><span class="nx">calculateReward</span><span class="p">(</span><span class="s1">&#39;habitComplete&#39;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">RewardSystem</span><span class="p">.</span><span class="nx">grantReward</span><span class="p">(</span><span class="nx">reward</span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;Habit completion&#39;</span><span class="p">);</span>
+
+<span class="w">    </span><span class="c1">// Check mission progress</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">missions</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">MissionSystem</span><span class="p">.</span><span class="nx">getDailyMissions</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">missions</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">mission</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">MissionSystem</span><span class="p">.</span><span class="nx">checkMissionProgress</span><span class="p">(</span><span class="nx">mission</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="p">});</span>
+
+<span class="w">    </span><span class="c1">// Save state</span>
+<span class="w">    </span><span class="nx">StorageManager</span><span class="p">.</span><span class="nx">save</span><span class="p">(</span><span class="nx">AppState</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
+
+<span class="w">  </span><span class="c1">// Render UI</span>
+<span class="w">  </span><span class="nx">renderDashboard</span><span class="p">();</span>
+<span class="p">});</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Link to this heading">¶</a></h2>
+<p>For more detailed examples and use cases:</p>
+<ul class="simple">
+<li><p><a class="reference internal" href="technical-overview.html"><span class="doc">Technical Overview</span></a> - Architecture and design patterns</p></li>
+<li><p><a class="reference internal" href="contributing.html"><span class="doc">Contributing Guidelines</span></a> - Contribution guidelines</p></li>
+<li><p><a class="reference external" href="https://github.com/lillian-na/GrowKitty">GitHub Repository</a> - Source code</p></li>
+</ul>
+</section>
+</section>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="Main">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">GrowKitty</a></h1>
+
+
+
+
+
+
+
+
+
+<search id="searchbox" style="display: none" role="search">
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" placeholder="Search"/>
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</search>
+<script>document.getElementById('searchbox').style.display = "block"</script><h3>Navigation</h3>
+<p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="about.html">About the Project</a></li>
+<li class="toctree-l1"><a class="reference internal" href="getting_started.html">Getting Started</a></li>
+<li class="toctree-l1"><a class="reference internal" href="how_to_use.html">How to Use</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">API Reference</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#core-api">Core API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#storage-api">Storage API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#event-system">Event System</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#utility-functions">Utility Functions</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#example-integration">Example Integration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#next-steps">Next Steps</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="configuration.html">Configuration Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="contributing.html">Contributing Guidelines</a></li>
+<li class="toctree-l1"><a class="reference internal" href="usage.html">Usage Guide</a></li>
+<li class="toctree-l1"><a class="reference internal" href="release-notes.html">Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="technical-overview.html">Technical Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="troubleshooting.html">Troubleshooting</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faq.html">Frequently Asked Questions</a></li>
+</ul>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+      <li>Previous: <a href="how_to_use.html" title="previous chapter">How to Use</a></li>
+      <li>Next: <a href="configuration.html" title="next chapter">Configuration Guide</a></li>
+  </ul></li>
+</ul>
+</div>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &#169;2025, nklee.
+      
+      |
+      Powered by <a href="https://www.sphinx-doc.org/">Sphinx 8.2.3</a>
+      &amp; <a href="https://alabaster.readthedocs.io">Alabaster 1.0.0</a>
+      
+      |
+      <a href="_sources/api-reference.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
