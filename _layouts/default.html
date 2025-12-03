@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ page.title }} | Grow Kitty</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
+
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
+</head>
+
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="logo-area">
+      <img src="{{ '/assets/img/kitty.png' | relative_url }}" class="logo-img" alt="kitty">
+      <span class="logo-text">Grow Kitty</span>
+    </div>
+
+    <nav>
+      <ul>
+        {% for item in site.nav %}
+        <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
+        {% endfor %}
+      </ul>
+    </nav>
+  </div>
+</header>
+
+<main class="content-area">
+  {{ content }}
+</main>
+
+<footer class="site-footer">
+  <p>🐾 Grow Kitty — Open-source habit tracking project.</p>
+</footer>
+
+</body>
+</html>
