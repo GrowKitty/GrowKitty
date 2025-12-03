@@ -5,36 +5,31 @@
   <title>{{ page.title }} | Grow Kitty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   {% seo %}
-
-<link rel="stylesheet" href="{{ '/assets/css/style.css?v=3' | relative_url }}">
-
+  <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
 </head>
 
 <body>
-  
-<div class="hero-bg" style="background-image: url('{{ '/assets/hhh.png' | relative_url }}');"></div>
 
-<header class="site-header transparent">
-  <div class="header-inner">
-    <div class="logo-area">
-      <img src="{{ '/assets/kkk.png' | relative_url }}" class="logo-img">
-      <span class="logo-text">Grow Kitty</span>
+  <header class="site-header">
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="{{ '/kkk.png' | relative_url }}" class="logo-img" alt="Grow Kitty logo">
+        <span class="logo-text">Grow Kitty</span>
+      </div>
+
+      <nav>
+        <ul>
+          {% for item in site.nav %}
+          <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
+          {% endfor %}
+        </ul>
+      </nav>
     </div>
+  </header>
 
-    <nav>
-      <ul>
-        {% for item in site.nav %}
-        <li><a href="{{ item.link | relative_url }}">{{ item.name }}</a></li>
-        {% endfor %}
-      </ul>
-    </nav>
-  </div>
-</header>
-
-<main class="hero-center fade-in">
-  <h1>Grow Kitty</h1>
-  <p>Gamified Habit Tracking Meets Virtual Pet Growth</p>
-</main>
+  <main class="page-container">
+    {{ content }}
+  </main>
 
 </body>
 </html>
