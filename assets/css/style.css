@@ -110,7 +110,7 @@ nav ul li a:hover {
 /* 가운데 타이틀 */
 .home-page .hero-center {
   position: absolute;
-  top: 55%;
+  top: 65%;
   left: 50%;
   transform: translate(-50%, -50%);
   text-align: center;
