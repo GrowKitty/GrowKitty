@@ -20,14 +20,3 @@ title: Home
   </ul>
 </div>
 
-<div class="section-card">
-  <h2>📘 Documentation</h2>
-  <p>Explore installation guides, API reference, architecture docs and more.</p>
-  <a class="btn-secondary" href="https://growkitty.readthedocs.io">Go to Docs</a>
-</div>
-
-<div class="section-card">
-  <h2>👥 Community</h2>
-  <p>Join the discussion, ask questions, or contribute to the project.</p>
-  <a class="btn-secondary" href="/community">Visit Community</a>
-</div>
