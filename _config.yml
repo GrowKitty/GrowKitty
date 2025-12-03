@@ -1,3 +1,22 @@
 title: Grow Kitty
-description: Open-source habit management project.
-theme: minima
+description: Gamified Habit Tracking meets Virtual Pet Growth
+baseurl: "/GrowKitty"
+url: "https://kimdohun020817.github.io"
+
+theme: null   # Custom theme enabled
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+nav:
+  - name: Home
+    link: "/"
+  - name: Features
+    link: "/features"
+  - name: Documentation
+    link: "https://growkitty.readthedocs.io"
+  - name: Community
+    link: "/community"
+  - name: Contact
+    link: "/contact"
