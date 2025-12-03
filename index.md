@@ -7,7 +7,6 @@ title: Home
   <img src="{{ '/assets/kkk.png' | relative_url }}" class="hero-cat">
   <h1>Grow Kitty</h1>
   <p class="hero-sub">Gamified Habit Tracking Meets Virtual Pet Growth</p>
-  <a class="btn-primary" href="https://growkitty.readthedocs.io">View Documentation</a>
 </div>
 
 <div class="section-card">
