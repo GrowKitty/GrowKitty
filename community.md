@@ -12,5 +12,25 @@ Share ideas, report issues, and talk with contributors.
 
 👉 <https://github.com/GrowKitty/GrowKitty/discussions>
 
+---
+
 ## 📢 Announcements
 Follow updates and release notes through the repository.
+
+---
+
+## ✉️ Contact the Community Team
+Have questions or suggestions?  
+Feel free to reach out by email!
+
+📨 **kej679502@naver.com**  
+
+---
+
+## 💬 Join Our Discord Server
+Chat in real-time with other users, share tips, and stay updated.
+
+🐾 **Grow Kitty Discord Server:**  
+👉 [<https://discord.gg/your-server-code>](https://discord.com/channels/1445346844375908375/1445346845558571081)
+
+> Replace `your-server-code` with your actual Discord invite link.
