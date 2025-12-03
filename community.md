@@ -3,44 +3,37 @@ layout: default
 title: Community
 ---
 
-[Home](index.md) • [Features](features.md) • [Community](community.md) • [Contact](contact.md)
----
+<div class="hero">
+  <h1>👥 Grow Kitty Community</h1>
+  <p>Connect with other users, contributors, and maintainers!</p>
+</div>
 
-# 👥 Community
+<div class="card">
+  <h2>💬 Discussions</h2>
+  <p>Join the conversation, ask questions, and share ideas.</p>
+  <a class="btn-primary" href="https://github.com/kimdohun020817/GrowKitty/discussions">
+    Go to Discussions
+  </a>
+</div>
 
-Grow Kitty thrives thanks to its open-source contributors and user community.  
-Join us in discussions, feedback, and collaborative development!
+<div class="card">
+  <h2>📢 Announcement Mailing List</h2>
+  <p>Stay updated with the latest releases, fixes, and updates.</p>
+  <p><i>Coming Soon – Mailing list will be available in future releases.</i></p>
+</div>
 
----
+<div class="card">
+  <h2>🧑‍💻 Developer Community</h2>
+  <p>Contribute to the codebase, improve features, or report issues.</p>
+  <ul>
+    <li><a href="https://github.com/kimdohun020817/GrowKitty/issues">Issue Tracker</a></li>
+    <li><a href="https://github.com/kimdohun020817/GrowKitty/pulls">Pull Requests</a></li>
+    <li><a href="https://growkitty.readthedocs.io">Developer Docs</a></li>
+  </ul>
+</div>
 
-## 💬 GitHub Discussions
-Ask questions, suggest new features, and interact with other developers.
-
-👉 https://github.com/lilian-na/GrowKitty/discussions
-
----
-
-## 🐞 Issue Tracker
-Found a bug or want to propose an improvement?
-
-👉 https://github.com/lilian-na/GrowKitty/issues
-
----
-
-## 💬 Real-Time Chat (Optional)
-Join our community chat server (e.g., Discord).
-
-👉 https://discord.com/channels/1445346844375908375/1445346845558571081
-
----
-
-## 🙌 How to Contribute
-Grow Kitty welcomes contributions of all kinds:
-- Code
-- Documentation
-- UI improvements
-- Bug reports
-- Feature suggestions
-
-Read the full guidelines here:  
-👉 [CONTRIBUTING.md](CONTRIBUTING.md)
+<div class="card">
+  <h2>🎉 Community Events</h2>
+  <p>Hackathons, feature discussions, and collaborative events.</p>
+  <p><i>More events will be announced soon.</i></p>
+</div>
