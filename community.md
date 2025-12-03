@@ -31,4 +31,4 @@ Feel free to reach out by email!
 Chat in real-time with other users, share tips, and stay updated.
 
 🐾 **Grow Kitty Discord Server:**  
-👉 [<https://discord.gg/your-server-code>](https://discord.com/channels/1445346844375908375/1445346845558571081)
+👉 https://discord.gg/g4ARvbZw
