@@ -7,5 +7,5 @@ title: Contact
 
 Have questions or feedback about Grow Kitty? Reach out anytime.
 
-- Email: **growkitty.project@example.com**  
+- Email: **kej679502@naver.com**  
 - GitHub: <https://github.com/GrowKitty/GrowKitty>
