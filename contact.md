@@ -3,36 +3,29 @@ layout: default
 title: Contact
 ---
 
-[Home](index.md) • [Features](features.md) • [Community](community.md) • [Contact](contact.md)
----
+<div class="hero">
+  <h1>📬 Contact Us</h1>
+  <p>Have questions, suggestions, or feedback? We'd love to hear from you.</p>
+</div>
 
-# 📬 Contact Us
+<div class="card">
+  <h2>📧 Email</h2>
+  <p>For inquiries or collaboration:</p>
+  <p><strong>growkitty.project@gmail.com</strong></p>
+</div>
 
-Have questions, ideas, or feedback?  
-Feel free to reach out through any of the following methods.
+<div class="card">
+  <h2>🌐 GitHub</h2>
+  <p>Report bugs, request features, or contribute to the project.</p>
+  <a class="btn-primary" href="https://github.com/kimdohun020817/GrowKitty">
+    Visit GitHub Repository
+  </a>
+</div>
 
----
-
-## 📧 Email
-📮 **kej679502@naver.com**  
-
----
-
-## 🐙 GitHub Issues
-Report bugs or request features:
-
-👉 https://github.com/lilian-na/GrowKitty/issues
-
----
-
-## 💬 Community Chat (Optional)
-Join our community chat for real-time communication.
-
-👉 https://discord.com/channels/1445346844375908375/1445346845558571081
-
----
-
-## 📝 Documentation
-Full documentation is available here:
-
-👉 https://your-readthedocs-link-here
+<div class="card">
+  <h2>🔧 Documentation</h2>
+  <p>For installation, usage, and API guides, check out the docs.</p>
+  <a class="btn-primary" href="https://growkitty.readthedocs.io">
+    Open Documentation
+  </a>
+</div>
