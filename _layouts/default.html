@@ -4,17 +4,20 @@
   <meta charset="UTF-8">
   <title>{{ page.title }} | Grow Kitty</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% seo %}
 
   <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-  {% seo %}
 </head>
 
 <body>
 
-<header class="site-header">
+<!-- 🐾 풀스크린 고양이 배경 -->
+<div class="hero-bg"></div>
+
+<header class="site-header transparent">
   <div class="header-inner">
     <div class="logo-area">
-      <img src="{{ '/assets/kkk.png' | relative_url }}" class="logo-img" alt="Kitty">
+      <img src="{{ '/assets/kkk.png' | relative_url }}" class="logo-img">
       <span class="logo-text">Grow Kitty</span>
     </div>
 
@@ -28,13 +31,11 @@
   </div>
 </header>
 
-<main class="content-area">
-  {{ content }}
+<!-- 🐾 중앙 텍스트 -->
+<main class="hero-center fade-in">
+  <h1>Grow Kitty</h1>
+  <p>Gamified Habit Tracking Meets Virtual Pet Growth</p>
 </main>
-
-<footer class="site-footer">
-  <p>🐾 Grow Kitty — Build better habits while growing a cute virtual cat.</p>
-</footer>
 
 </body>
 </html>
