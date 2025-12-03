@@ -1,4 +1,3 @@
-/* 기본 폰트 / 색 */
 body {
   margin: 0;
   font-family: "Segoe UI", sans-serif;
@@ -6,7 +5,6 @@ body {
   background: #fffaf2;
 }
 
-/* 공통 헤더 */
 .site-header {
   position: fixed;
   top: 0;
@@ -48,7 +46,6 @@ body {
   font-size: 1.3rem;
 }
 
-/* 메뉴 */
 nav ul {
   list-style: none;
   display: flex;
@@ -69,7 +66,6 @@ nav ul li a:hover {
   opacity: 0.7;
 }
 
-/* 홈 아닌 페이지의 기본 컨테이너 */
 .page-container {
   width: 90%;
   max-width: 900px;
@@ -85,29 +81,25 @@ nav ul li a:hover {
   font-size: 2.3rem;
 }
 
-/* ========================= */
-/*  홈 전용 스타일 (home-page) */
-/* ========================= */
-
 .home-page {
   overflow: hidden;
 }
 
-/* 고양이 배경 */
+
 .home-page .hero-bg {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100vh;
-  background-image: url("../hhh.png"); /* assets/css 기준으로 ../hhh.png */
+  background-image: url("../hhh.png"); 
   background-size: cover;
   background-position: center;
   filter: brightness(0.93);
   z-index: -1;
 }
 
-/* 가운데 타이틀 */
+
 .home-page .hero-center {
   position: absolute;
   top: 65%;
@@ -126,7 +118,7 @@ nav ul li a:hover {
   font-size: 1.2rem;
 }
 
-/* 페이드인 효과 */
+
 .fade-in {
   opacity: 0;
   animation: fadeIn 1.8s ease-out forwards;
