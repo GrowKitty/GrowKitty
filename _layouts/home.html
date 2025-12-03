@@ -10,12 +10,14 @@
 
 <body class="home-page">
 
+  <!-- 배경 이미지 -->
   <div class="hero-bg"></div>
 
+  <!-- 상단 헤더 -->
   <header class="site-header transparent">
     <div class="header-inner">
       <div class="logo-area">
-        <img src="{{ '/kkk.png' | relative_url }}" class="logo-img">
+        <img src="{{ '/kkk.png' | relative_url }}" class="logo-img" alt="Grow Kitty logo">
         <span class="logo-text">Grow Kitty</span>
       </div>
 
@@ -29,6 +31,7 @@
     </div>
   </header>
 
+  <!-- 가운데 타이틀 영역 -->
   <main class="hero-center fade-in">
     {{ content }}
   </main>
