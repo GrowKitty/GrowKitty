@@ -1,4 +1,4 @@
-How To Use
+Usage Guide
 ===========
 
 This guide covers all the features and functionality of GrowKitty, helping you make the most of your habit-building journey.
