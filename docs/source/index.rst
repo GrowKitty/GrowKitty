@@ -17,7 +17,7 @@ documentation for details.
    
    about
    getting_started
-   how_to_use
+   usage_guide
    configuration
    contributing
    release-notes
