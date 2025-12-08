@@ -1,0 +1,450 @@
+---
+layout: default
+title: GrowKitty Demo
+---
+
+<style>
+  body {
+    font-family: 'Inter', sans-serif;
+    background: #f7f7fb;
+  }
+
+  h1 {
+    margin-bottom: 10px;
+    font-weight: 700;
+  }
+
+  .demo-section {
+    max-width: 750px;
+    margin: 20px auto;
+    padding: 20px;
+  }
+
+  .cat-card {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    margin-bottom: 30px;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+  }
+
+  .cat-img {
+    width: 120px;
+    height: 120px;
+    border-radius: 12px;
+    overflow: hidden;
+  }
+
+  .cat-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .cat-info {
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* XP Bar */
+  .xp-bar-container {
+    margin-top: 8px;
+    width: 230px;
+    height: 12px;
+    background: #e4e4e4;
+    border-radius: 6px;
+    overflow: hidden;
+  }
+
+  .xp-bar {
+    height: 100%;
+    background: linear-gradient(90deg, #6a4feb, #a08cff);
+    width: 0%;
+    transition: width 0.4s ease;
+  }
+
+  /* Coins */
+  .coins {
+    font-size: 18px;
+    font-weight: bold;
+    color: #ffb300;
+    margin-top: 5px;
+  }
+
+  .coin-animate {
+    animation: coinPop 0.4s ease;
+  }
+
+  @keyframes coinPop {
+    0% { transform: scale(1); }
+    40% { transform: scale(1.3); }
+    100% { transform: scale(1); }
+  }
+
+  .card {
+    background: white;
+    padding: 18px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+    margin-bottom: 25px;
+  }
+
+  button {
+    background: #6a4feb;
+    color: white;
+    padding: 10px 16px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: 0.2s;
+    margin: 4px;
+  }
+
+  button:hover {
+    background: #5539d6;
+  }
+
+  input {
+    padding: 10px;
+    margin-top: 8px;
+    width: 90%;
+    border-radius: 8px;
+    border: 1px solid #ccc;
+  }
+
+  .habit-item {
+    padding: 6px 0;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mission-item {
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee;
+  }
+
+  .mission-progress {
+    height: 10px;
+    width: 200px;
+    background: #ccc;
+    border-radius: 5px;
+    overflow: hidden;
+  }
+
+  .mission-bar {
+    height: 100%;
+    background: #6a4feb;
+    width: 0%;
+    transition: width 0.3s ease;
+  }
+
+</style>
+
+<div class="demo-section">
+
+  <h1>🐾 GrowKitty 기능 데모</h1>
+  <p>발표용 UI 데모 페이지입니다.</p>
+
+  <!-- Cat Status -->
+  <div class="cat-card">
+    <div class="cat-img">
+      <img id="cat-img" src="{{ '/assets/images/hhh.png' | relative_url }}">
+    </div>
+
+    <div class="cat-info" id="cat-info">
+      로딩중...
+      <div class="xp-bar-container">
+        <div class="xp-bar" id="xp-bar"></div>
+      </div>
+      <div class="coins" id="coinDisplay">코인: 0</div>
+    </div>
+  </div>
+
+  <!-- Create Habit -->
+  <div class="card">
+    <h2>📝 습관 만들기</h2>
+    <input id="habitName" placeholder="예: 물 마시기" />
+    <button onclick="addHabit()">습관 생성</button>
+
+    <h3>📋 습관 목록</h3>
+    <div id="habitList">아직 습관이 없습니다.</div>
+  </div>
+
+  <!-- Complete Habit -->
+  <div class="card">
+    <h2>🎯 습관 완료</h2>
+    <input id="habitId" placeholder="습관 ID 입력" />
+    <button onclick="completeHabit()">완료</button>
+  </div>
+
+  <!-- 구매 -->
+  <div class="card">
+    <h2>🛒 아이템 구매</h2>
+    <button onclick="purchaseItem('fancyHat', 30)">🎩 모자 (30 코인)</button>
+    <button onclick="purchaseItem('goldCollar', 60)">🟡 골드 목걸이 (60 코인)</button>
+  </div>
+
+  <!-- 액세서리 장착 -->
+  <div class="card">
+    <h2>✨ 액세서리 착용</h2>
+    <div id="accessoryList">획득한 아이템 없음</div>
+  </div>
+
+  <!-- Missions -->
+  <div class="card">
+    <h2>🔥 오늘의 미션</h2>
+    <div id="missionList">로드 중...</div>
+  </div>
+
+  <!-- Rewards -->
+  <div class="card">
+    <h2>💰 보상</h2>
+    <p id="rewardBox">아직 없음</p>
+  </div>
+
+</div>
+
+<script>
+// -----------------------------
+// Mock API Data
+// -----------------------------
+const CatController = {
+  cat: {
+    name: "키티",
+    stage: "young",
+    level: 3,
+    xp: 40,
+    xpToNext: 100,
+    mood: "happy",
+    coins: 120,
+    accessories: []
+  }
+};
+
+const HabitManager = {
+  habits: {},
+  addHabit(config) {
+    const id = "habit_" + Date.now();
+    this.habits[id] = { ...config, id };
+    return this.habits[id];
+  },
+  completeHabit(id) {
+    return this.habits[id] ? { habitId: id } : null;
+  }
+};
+
+const MissionSystem = {
+  missions: [
+    { id: "m1", title: "습관 2개 완료하기", progress: 0 }
+  ]
+};
+
+const RewardSystem = {
+  calculateReward() {
+    return { xp: 20, coins: 10 };
+  },
+
+  grantReward(reward) {
+    const cat = CatController.cat;
+
+    const beforeXP = cat.xp;
+    cat.xp += reward.xp;
+
+    if (cat.xp >= cat.xpToNext) {
+      cat.level++;
+      cat.xp -= cat.xpToNext;
+      cat.xpToNext += 50;
+    }
+
+    animateXP(beforeXP, cat.xp, cat.xpToNext);
+
+    animateCoins(cat.coins, cat.coins + reward.coins);
+    cat.coins += reward.coins;
+
+    return reward;
+  }
+};
+
+// -----------------------------
+// XP Animation
+// -----------------------------
+function animateXP(start, end, max) {
+  const bar = document.getElementById("xp-bar");
+  let percent = (start / max) * 100;
+  const target = (end / max) * 100;
+
+  function step() {
+    percent += 1;
+    if (percent > target) percent = target;
+    bar.style.width = percent + "%";
+    if (percent < target) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+// -----------------------------
+// Coin Animation
+// -----------------------------
+function animateCoins(start, end) {
+  const el = document.getElementById("coinDisplay");
+  let value = start;
+
+  function step() {
+    value++;
+    el.innerText = `코인: ${value}`;
+    el.classList.add("coin-animate");
+    setTimeout(() => el.classList.remove("coin-animate"), 150);
+
+    if (value < end) requestAnimationFrame(step);
+  }
+
+  requestAnimationFrame(step);
+}
+
+// -----------------------------
+// Purchase (Coin Check)
+// -----------------------------
+function purchaseItem(item, cost) {
+  const cat = CatController.cat;
+
+  if (cat.coins < cost) {
+    alert("❌ 코인 부족!");
+    return;
+  }
+
+  animateCoins(cat.coins, cat.coins - cost);
+  cat.coins -= cost;
+
+  cat.accessories.push(item);
+  renderAccessories();
+
+  alert("🛒 구매완료! " + item);
+}
+
+// -----------------------------
+// Accessory Wear
+// -----------------------------
+function renderAccessories() {
+  const list = document.getElementById("accessoryList");
+  const acc = CatController.cat.accessories;
+
+  if (acc.length === 0) {
+    list.innerHTML = "획득한 아이템 없음";
+    return;
+  }
+
+  list.innerHTML = acc
+    .map(x => `<button onclick="applyAccessory('${x}')">${x} 착용</button>`)
+    .join("");
+}
+
+function applyAccessory(acc) {
+  alert(`✨ '${acc}' 착용!`);
+
+  if (acc === "fancyHat") {
+    document.getElementById("cat-img").src =
+      "{{ '/assets/images/kkk.png' | relative_url }}";
+  }
+}
+
+// -----------------------------
+// Missions
+// -----------------------------
+function renderMissions() {
+  document.getElementById("missionList").innerHTML =
+    MissionSystem.missions
+      .map(m => `
+        <div class="mission-item">
+          <b>${m.title}</b><br>
+          <div class="mission-progress">
+            <div class="mission-bar" style="width:${m.progress * 100}%"></div>
+          </div>
+          진행도: ${(m.progress * 100).toFixed(0)}%
+        </div>
+      `)
+      .join("");
+}
+
+// -----------------------------
+// Habit UI
+// -----------------------------
+function refreshHabitList() {
+  const area = document.getElementById("habitList");
+  const items = Object.values(HabitManager.habits);
+
+  if (items.length === 0) {
+    area.innerHTML = "아직 습관이 없습니다.";
+    return;
+  }
+
+  area.innerHTML = items
+    .map(h => `<div class="habit-item">• ${h.name} (ID: ${h.id})</div>`)
+    .join("");
+}
+
+// -----------------------------
+// Habit Create & Complete
+// -----------------------------
+function addHabit() {
+  const name = document.getElementById("habitName").value.trim();
+  if (!name) return alert("습관 이름 입력 필요!");
+
+  const h = HabitManager.addHabit({ name });
+  alert("습관 생성됨: " + h.id);
+  refreshHabitList();
+}
+
+function completeHabit() {
+  const id = document.getElementById("habitId").value.trim();
+  const done = HabitManager.completeHabit(id);
+
+  if (!done) return alert("없는 습관 ID!");
+
+  const reward = RewardSystem.calculateReward();
+  RewardSystem.grantReward(reward);
+
+  document.getElementById("rewardBox").innerText =
+    `XP +${reward.xp}, 코인 +${reward.coins}`;
+
+  MissionSystem.missions[0].progress += 0.5;
+  renderMissions();
+  updateCatUI();
+
+  alert("완료!");
+}
+
+// -----------------------------
+// Cat UI
+// -----------------------------
+function updateCatUI() {
+  const c = CatController.cat;
+
+  document.getElementById("cat-info").innerHTML =
+    `이름: <b>${c.name}</b><br>
+     레벨: <b>${c.level}</b><br>
+     기분: <b>${c.mood}</b><br>
+     XP: <b>${c.xp}</b> / ${c.xpToNext}
+     <div class="xp-bar-container">
+       <div class="xp-bar" id="xp-bar"></div>
+     </div>
+     <div class="coins" id="coinDisplay">코인: ${c.coins}</div>
+    `;
+
+  document.getElementById("xp-bar").style.width =
+    (c.xp / c.xpToNext) * 100 + "%";
+}
+
+
+// -----------------------------
+// Initialize
+// -----------------------------
+updateCatUI();
+refreshHabitList();
+renderMissions();
+renderAccessories();
+</script>

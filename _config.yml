@@ -12,6 +12,8 @@ plugins:
 nav:
   - name: Home
     link: "/"
+  - name: Demo
+    link: "/demo.html"
   - name: Features
     link: "/features"
   - name: Documentation

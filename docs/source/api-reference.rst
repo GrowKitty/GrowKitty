@@ -1,10 +1,138 @@
 API Reference
 =============
 
-This document provides detailed reference for GrowKitty's JavaScript API, useful for developers who want to extend or integrate with the application.
+This document defines the planned JavaScript API specification for GrowKitty.
+All functions below follow a consistent format with:
 
-Core API
+- **Parameters**: input
+- **Returns**: output
+- **Example**: actual usage example
+
+Some functions may omit one or more of these fields when they are not applicable.
+
+.. contents::
+   :local:
+   :depth: 2
+
+.. note::
+
+   This is a **specification document**.
+   Some APIs may not be fully implemented yet and are used for design reference only.
+
+Data Models
+===========
+
+This section defines the object structures returned or consumed by the API.
+
+Habit
+-----
+Represents a user’s habit configuration and metadata.
+
+.. code-block:: javascript
+
+    {
+      id: string,
+      name: string,
+      category: string,
+      frequency: string,       // 'daily', 'weekly', 'custom'
+      reminderTime: string,    // 'HH:MM' or null
+      notes: string,
+      active: boolean,
+      createdAt: Date,
+      updatedAt: Date
+    }
+
+Completion
+----------
+
+.. code-block:: javascript
+
+    {
+      habitId: string,
+      date: Date,
+      timestamp: number
+    }
+
+
+Skip
+----
+
+.. code-block:: javascript
+
+    {
+      habitId: string,
+      reason: string | null,
+      date: Date
+    }
+
+
+Mission
+-------
+
+.. code-block:: javascript
+
+    {
+      id: string,
+      title: string,
+      description: string,
+      progress: number,     // 0.0 - 1.0
+      reward: {
+        xp: number,
+        coins: number
+      }
+    }
+
+
+Cat
+---
+
+.. code-block:: javascript
+
+    {
+      name: string,
+      stage: string,        // kitten | young | adult | master | legendary
+      level: number,
+      mood: string,         // happy | content | neutral | sad | sick
+      happiness: number,    // 0 - 100
+      accessories: Array<string>
+    }
+
+
+Reward
+------
+
+.. code-block:: javascript
+
+    {
+      xp: number,
+      coins: number,
+      gems: number
+    }
+
+
+PurchaseResult
+--------------
+
+.. code-block:: javascript
+
+    {
+      success: boolean,
+      remainingCoins: number,
+      remainingGems: number
+    }
+
+
+AppState
 --------
+
+.. code-block:: javascript
+
+    {
+      user: object,
+      habits: Array<Habit>,
+      cat: Cat,
+      missions: Array<Mission>
+    }
 
 HabitManager
 ~~~~~~~~~~~~
@@ -829,4 +957,4 @@ For more detailed examples and use cases:
 
 - :doc:`technical-overview` - Architecture and design patterns
 - :doc:`contributing` - Contribution guidelines
-- `GitHub Repository <https://github.com/lillian-na/GrowKitty>`_ - Source code
+- `GitHub Repository <https://github.com/GrowKitty/GrowKitty>`_ - Source code
