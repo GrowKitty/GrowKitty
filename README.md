@@ -1,59 +1,59 @@
-# Grow Kitty
+# 🐱 Grow Kitty
 
-## Overview
-Grow Kitty is an open-source habit management application designed to enhance user motivation through gamification.  
-By integrating daily random missions, rewards, and a virtual cat that reacts to user performance, the application encourages consistent habit formation in an interactive and engaging way.  
+**[📚 Read The Docs](https://growkitty.readthedocs.io/en/latest/)** 
 
-The project aims to address the limitations of traditional habit-tracking applications, which often lack emotional engagement and user participation. Grow Kitty provides a system where users can maintain daily habits while observing the growth of their virtual cat.
+**[한국어](README.ko.md)**
 
+</div>
 
+---
 
-## Problem Definition
-Many users struggle to maintain habits due to repetitive design and low engagement in existing applications.  
-Grow Kitty focuses on sustaining user participation by incorporating reward-based mechanics, emotional feedback, and community interaction.
+## 📖 Overview
 
+Grow Kitty is an innovative open-source habit management application that transforms daily routines into an engaging experience through gamification. Watch your virtual cat grow and thrive as you build better habits!
 
+By combining daily random missions, meaningful rewards, and an adorable virtual cat companion that responds to your achievements, Grow Kitty makes habit formation fun, interactive, and emotionally rewarding.
 
-## Objectives
-- Encourage consistent habit formation through gamification.
-- Provide emotional engagement via a virtual cat that responds to user behavior.
-- Enable user interaction through social features such as sharing and competition.
-- Design an accessible, lightweight web-based system using JavaScript.
+## 🎯 Why Grow Kitty?
 
+Traditional habit-tracking apps often fail to maintain long-term user engagement due to repetitive designs and lack of emotional connection. Grow Kitty addresses these challenges by:
 
+- **Emotional Engagement**: Your virtual cat reacts to your progress, creating a meaningful bond
+- **Dynamic Gameplay**: Random daily missions keep the experience fresh and exciting
+- **Social Connection**: Share achievements and compete with friends
+- **Visual Progress**: Watch your cat grow alongside your personal development
 
-## Core Features
+## ✨ Key Features
+
 | Feature | Description |
-|----------|-------------|
-| Virtual Cat Growth | The cat grows and reacts based on the user's habit success rate. |
-| Random Missions | Users receive daily random missions to prevent monotony. |
-| Reward System | Completing missions provides in-app rewards or cat accessories. |
-| Community and Competition | Users can view and compare other cats or rankings. |
-| Habit Dashboard | Displays success rate, streaks, and progress statistics. |
+| --- | --- |
+| 🐈 **Virtual Cat Growth** | Your cat evolves based on your habit completion rate, providing visual motivation |
+| 🎯 **Random Daily Missions** | Fresh challenges every day to keep you engaged and prevent monotony |
+| 🎁 **Reward System** | Earn in-app rewards, unlock cute accessories, and customize your cat |
+| 👥 **Community Features** | Compare progress, share achievements, and climb the leaderboard |
+| 📊 **Habit Dashboard** | Track your success rate, streaks, and detailed progress statistics |
 
+## 🛠 Technical Stack
 
+| Category | Technology |
+| --- | --- |
+| **Language** | JavaScript |
+| **Version Control** | Git, GitHub |
+| **Communication** | KakaoTalk, Zoom |
 
-## Technical Stack
-| Category | Tool / Framework |
-|-----------|------------------|
-| Language | JavaScript |
-| Version Control | Git, GitHub |
-| Communication | KakaoTalk, Zoom |
+## 👥 Team
 
-
-
-## Team Roles
 | Name | Role | Responsibilities |
-|------|------|------------------|
-| 이나경 | Project Leader | Project management, documentation, GitHub repository management |
-| 유병희 | Developer | Implementation of frontend functions and reward logic |
-| 김도훈 | Designer | UI/UX design, character illustration, and visual consistency |
-| 김수민 | QA / Communication | Testing, meeting documentation, and task coordination |
+| --- | --- | --- |
+| **이나경** | Project Leader | Project management, documentation, repository management |
+| **유병희** | Developer | Frontend implementation and reward system logic |
+| **김도훈** | Designer | UI/UX design, character illustration, visual consistency |
+| **김수민** | QA / Communication | Testing, documentation, task coordination |
 
+## 🌐 Website
 
+Coming soon!
 
-## Documentation  
-https://growkitty.readthedocs.io/en/latest/
+## 📄 License
 
-## Website  
-(프론트가 만들면 링크 연결)
+This project is licensed under the MIT License.
