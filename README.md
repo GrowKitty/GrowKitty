@@ -52,7 +52,7 @@ Traditional habit-tracking apps often fail to maintain long-term user engagement
 
 ## 🌐 Website
 
-Coming soon!
+https://growkitty.github.io/GrowKitty/
 
 ## 📄 License
 
