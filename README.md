@@ -37,7 +37,7 @@ Traditional habit-tracking apps often fail to maintain long-term user engagement
 
 | Category | Technology |
 | --- | --- |
-| **Language** | JavaScript |
+| **Language** | JavaScript, CSS, HTML |
 | **Version Control** | Git, GitHub |
 | **Communication** | KakaoTalk, Zoom |
 
