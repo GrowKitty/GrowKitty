@@ -146,8 +146,8 @@ title: GrowKitty Demo
 
 <div class="demo-section">
 
-  <h1>🐾 GrowKitty 기능 데모</h1>
-  <p>발표용 UI 데모 페이지입니다.</p>
+  <h1>🐾 GrowKitty Feature Demo</h1>
+  <p>UI demo page for presentation.</p>
 
   <!-- Cat Status -->
   <div class="cat-card">
@@ -156,54 +156,54 @@ title: GrowKitty Demo
     </div>
 
     <div class="cat-info" id="cat-info">
-      로딩중...
+      Loading...
       <div class="xp-bar-container">
         <div class="xp-bar" id="xp-bar"></div>
       </div>
-      <div class="coins" id="coinDisplay">코인: 0</div>
+      <div class="coins" id="coinDisplay">Coins: 0</div>
     </div>
   </div>
 
   <!-- Create Habit -->
   <div class="card">
-    <h2>📝 습관 만들기</h2>
-    <input id="habitName" placeholder="예: 물 마시기" />
-    <button onclick="addHabit()">습관 생성</button>
+    <h2>📝 Create Habit</h2>
+    <input id="habitName" placeholder="e.g., Drink water" />
+    <button onclick="addHabit()">Create Habit</button>
 
-    <h3>📋 습관 목록</h3>
-    <div id="habitList">아직 습관이 없습니다.</div>
+    <h3>📋 Habit List</h3>
+    <div id="habitList">No habits yet.</div>
   </div>
 
   <!-- Complete Habit -->
   <div class="card">
-    <h2>🎯 습관 완료</h2>
-    <input id="habitId" placeholder="습관 ID 입력" />
-    <button onclick="completeHabit()">완료</button>
+    <h2>🎯 Complete Habit</h2>
+    <input id="habitId" placeholder="Enter habit ID" />
+    <button onclick="completeHabit()">Complete</button>
   </div>
 
   <!-- 구매 -->
   <div class="card">
-    <h2>🛒 아이템 구매</h2>
-    <button onclick="purchaseItem('fancyHat', 30)">🎩 모자 (30 코인)</button>
-    <button onclick="purchaseItem('goldCollar', 60)">🟡 골드 목걸이 (60 코인)</button>
+    <h2>🛒 Purchase Item</h2>
+    <button onclick="purchaseItem('fancyHat', 30)">🎩 Hat (30 Coins)</button>
+    <button onclick="purchaseItem('goldCollar', 60)">🟡 Gold Collar (60 Coins)</button>
   </div>
 
   <!-- 액세서리 장착 -->
   <div class="card">
-    <h2>✨ 액세서리 착용</h2>
-    <div id="accessoryList">획득한 아이템 없음</div>
+    <h2>✨ Wear Accessory</h2>
+    <div id="accessoryList">No items acquired</div>
   </div>
 
   <!-- Missions -->
   <div class="card">
-    <h2>🔥 오늘의 미션</h2>
-    <div id="missionList">로드 중...</div>
+    <h2>🔥 Today's Mission</h2>
+    <div id="missionList">Loading...</div>
   </div>
 
   <!-- Rewards -->
   <div class="card">
-    <h2>💰 보상</h2>
-    <p id="rewardBox">아직 없음</p>
+    <h2>💰 Rewards</h2>
+    <p id="rewardBox">None yet</p>
   </div>
 
 </div>
@@ -214,7 +214,7 @@ title: GrowKitty Demo
 // -----------------------------
 const CatController = {
   cat: {
-    name: "키티",
+    name: "Kitty",
     stage: "young",
     level: 3,
     xp: 40,
@@ -239,7 +239,7 @@ const HabitManager = {
 
 const MissionSystem = {
   missions: [
-    { id: "m1", title: "습관 2개 완료하기", progress: 0 }
+    { id: "m1", title: "Complete 2 habits", progress: 0 }
   ]
 };
 
@@ -296,7 +296,7 @@ function animateCoins(start, end) {
 
   function step() {
     value++;
-    el.innerText = `코인: ${value}`;
+    el.innerText = `Coins: ${value}`;
     el.classList.add("coin-animate");
     setTimeout(() => el.classList.remove("coin-animate"), 150);
 
@@ -313,7 +313,7 @@ function purchaseItem(item, cost) {
   const cat = CatController.cat;
 
   if (cat.coins < cost) {
-    alert("❌ 코인 부족!");
+    alert("❌ Insufficient coins!");
     return;
   }
 
@@ -323,7 +323,7 @@ function purchaseItem(item, cost) {
   cat.accessories.push(item);
   renderAccessories();
 
-  alert("🛒 구매완료! " + item);
+  alert("🛒 Purchase complete! " + item);
 }
 
 // -----------------------------
@@ -334,17 +334,17 @@ function renderAccessories() {
   const acc = CatController.cat.accessories;
 
   if (acc.length === 0) {
-    list.innerHTML = "획득한 아이템 없음";
+    list.innerHTML = "No items acquired";
     return;
   }
 
   list.innerHTML = acc
-    .map(x => `<button onclick="applyAccessory('${x}')">${x} 착용</button>`)
+    .map(x => `<button onclick="applyAccessory('${x}')">Wear ${x}</button>`)
     .join("");
 }
 
 function applyAccessory(acc) {
-  alert(`✨ '${acc}' 착용!`);
+  alert(`✨ Wearing '${acc}'!`);
 
   if (acc === "fancyHat") {
     document.getElementById("cat-img").src =
@@ -364,7 +364,7 @@ function renderMissions() {
           <div class="mission-progress">
             <div class="mission-bar" style="width:${m.progress * 100}%"></div>
           </div>
-          진행도: ${(m.progress * 100).toFixed(0)}%
+          Progress: ${(m.progress * 100).toFixed(0)}%
         </div>
       `)
       .join("");
@@ -378,7 +378,7 @@ function refreshHabitList() {
   const items = Object.values(HabitManager.habits);
 
   if (items.length === 0) {
-    area.innerHTML = "아직 습관이 없습니다.";
+    area.innerHTML = "No habits yet.";
     return;
   }
 
@@ -392,10 +392,10 @@ function refreshHabitList() {
 // -----------------------------
 function addHabit() {
   const name = document.getElementById("habitName").value.trim();
-  if (!name) return alert("습관 이름 입력 필요!");
+  if (!name) return alert("Please enter habit name!");
 
   const h = HabitManager.addHabit({ name });
-  alert("습관 생성됨: " + h.id);
+  alert("Habit created: " + h.id);
   refreshHabitList();
 }
 
@@ -403,19 +403,19 @@ function completeHabit() {
   const id = document.getElementById("habitId").value.trim();
   const done = HabitManager.completeHabit(id);
 
-  if (!done) return alert("없는 습관 ID!");
+  if (!done) return alert("Invalid habit ID!");
 
   const reward = RewardSystem.calculateReward();
   RewardSystem.grantReward(reward);
 
   document.getElementById("rewardBox").innerText =
-    `XP +${reward.xp}, 코인 +${reward.coins}`;
+    `XP +${reward.xp}, Coins +${reward.coins}`;
 
   MissionSystem.missions[0].progress += 0.5;
   renderMissions();
   updateCatUI();
 
-  alert("완료!");
+  alert("Complete!");
 }
 
 // -----------------------------
@@ -425,14 +425,14 @@ function updateCatUI() {
   const c = CatController.cat;
 
   document.getElementById("cat-info").innerHTML =
-    `이름: <b>${c.name}</b><br>
-     레벨: <b>${c.level}</b><br>
-     기분: <b>${c.mood}</b><br>
+    `Name: <b>${c.name}</b><br>
+     Level: <b>${c.level}</b><br>
+     Mood: <b>${c.mood}</b><br>
      XP: <b>${c.xp}</b> / ${c.xpToNext}
      <div class="xp-bar-container">
        <div class="xp-bar" id="xp-bar"></div>
      </div>
-     <div class="coins" id="coinDisplay">코인: ${c.coins}</div>
+     <div class="coins" id="coinDisplay">Coins: ${c.coins}</div>
     `;
 
   document.getElementById("xp-bar").style.width =
